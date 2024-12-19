@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
+use App\Library\Enums\Permissions;
 use App\Models\User;
 use Filament\Facades\Filament;
 use Filament\Forms;
@@ -53,20 +54,13 @@ class UserResource extends BaseResource
             ->filters([])
             ->actions([
                 Tables\Actions\ViewAction::make()
-                    ->authorize(fn() => Filament::auth()->user()?->can('view-user')),
+                    ->authorize(fn() => Filament::auth()->user()?->can(Permissions::VIEW_USER)),
                 Tables\Actions\EditAction::make()
-                    ->authorize(fn () => Filament::auth()->user()?->can('edit-user')),
+                    ->authorize(fn () => Filament::auth()->user()?->can(Permissions::EDIT_USER)),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
     }
 
     public static function getPages(): array

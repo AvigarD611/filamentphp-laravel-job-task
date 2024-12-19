@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource as SpatieRoleResource;
 use App\Filament\Resources\RoleResource\Pages;
+use App\Library\Enums\Permissions;
 use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -33,9 +34,9 @@ class RoleResource extends SpatieRoleResource
         $table = parent::table($table);
         $table->actions([
             Tables\Actions\ViewAction::make()
-                ->authorize(fn() => Filament::auth()->user()?->can('view-role')),
+                ->authorize(fn() => Filament::auth()->user()?->can(Permissions::VIEW_ROLE)),
             Tables\Actions\EditAction::make()
-                ->authorize(fn() => Filament::auth()->user()?->can('edit-role')),
+                ->authorize(fn() => Filament::auth()->user()?->can(Permissions::EDIT_ROLE)),
         ]);
 
         return $table;
@@ -52,11 +53,11 @@ class RoleResource extends SpatieRoleResource
 
     public static function canViewAny(): bool
     {
-        return auth()->user()?->can('view-role');
+        return auth()->user()?->can(Permissions::VIEW_ROLE);
     }
 
     public static function canEdit(Model $record): bool
     {
-        return auth()->user()?->can('edit-role');
+        return auth()->user()?->can(Permissions::EDIT_ROLE);
     }
 }
