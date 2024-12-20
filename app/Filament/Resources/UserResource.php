@@ -6,8 +6,13 @@ use App\Library\Enums\Permissions;
 use App\Models\User;
 use Filament\Facades\Filament;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class UserResource extends BaseResource
@@ -25,14 +30,14 @@ class UserResource extends BaseResource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('email')
+                TextInput::make('email')
                     ->email()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('roles')
+                Select::make('roles')
                     ->label('Roles')
                     ->multiple()
                     ->relationship('roles', 'name')
@@ -45,20 +50,20 @@ class UserResource extends BaseResource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('email')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('roles.name')->label('Roles')->sortable(),
-                Tables\Columns\TextColumn::make('created_at')->label('Created At')->dateTime(),
+                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('email')->sortable()->searchable(),
+                TextColumn::make('roles.name')->label('Roles')->sortable(),
+                TextColumn::make('created_at')->label('Created At')->dateTime(),
             ])
             ->filters([])
             ->actions([
-                Tables\Actions\ViewAction::make()
+                ViewAction::make()
                     ->authorize(fn() => Filament::auth()->user()?->can(Permissions::VIEW_USER)),
-                Tables\Actions\EditAction::make()
+                EditAction::make()
                     ->authorize(fn () => Filament::auth()->user()?->can(Permissions::EDIT_USER)),
             ])
             ->bulkActions([
-                Tables\Actions\DeleteBulkAction::make(),
+//                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 }

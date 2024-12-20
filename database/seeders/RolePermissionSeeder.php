@@ -64,7 +64,7 @@ class RolePermissionSeeder extends Seeder
                 self::VIEW_AD_PERMISSION_NAME,
                 self::EDIT_AD_PERMISSION_NAME,
                 self::VIEW_AD_TEMPLATE_NAME,
-                self::EDIT_AD_TEMPLATE_NAME,
+//                self::EDIT_AD_TEMPLATE_NAME,
             ],
             self::EDITOR_ROLE_NAME => [
                 self::VIEW_AD_PERMISSION_NAME,
