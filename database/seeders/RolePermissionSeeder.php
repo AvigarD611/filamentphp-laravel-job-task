@@ -29,6 +29,7 @@ class RolePermissionSeeder extends Seeder
     private const EDIT_AD_PERMISSION_NAME = 'edit-ad';
     private const VIEW_AD_TEMPLATE_NAME = 'view-ad-template';
     private const EDIT_AD_TEMPLATE_NAME = 'edit-ad-template';
+    private const VIEW_CHURN_WIDGET_PERMISSION_NAME = 'view-churn-widget';
 
     /**
      * Run the database seeds.
@@ -47,6 +48,7 @@ class RolePermissionSeeder extends Seeder
             self::EDIT_AD_PERMISSION_NAME => self::EDIT_AD_PERMISSION_NAME,
             self::VIEW_AD_TEMPLATE_NAME => self::VIEW_AD_TEMPLATE_NAME,
             self::EDIT_AD_TEMPLATE_NAME => self::EDIT_AD_TEMPLATE_NAME,
+            self::VIEW_CHURN_WIDGET_PERMISSION_NAME => self::VIEW_CHURN_WIDGET_PERMISSION_NAME,
         ];
 
         // Create permissions
@@ -65,6 +67,7 @@ class RolePermissionSeeder extends Seeder
                 self::EDIT_AD_PERMISSION_NAME,
                 self::VIEW_AD_TEMPLATE_NAME,
 //                self::EDIT_AD_TEMPLATE_NAME,
+                self::VIEW_CHURN_WIDGET_PERMISSION_NAME,
             ],
             self::EDITOR_ROLE_NAME => [
                 self::VIEW_AD_PERMISSION_NAME,

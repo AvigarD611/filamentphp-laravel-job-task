@@ -14,4 +14,5 @@ enum Permissions
     public const EDIT_AD = 'edit-ad';
     public const VIEW_AD_TEMPLATE = 'view-ad-template';
     public const EDIT_AD_TEMPLATE = 'edit-ad-template';
+    public const VIEW_CHURN_WIDGET = 'view-churn-widget';
 }
