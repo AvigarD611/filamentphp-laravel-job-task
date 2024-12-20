@@ -8,6 +8,8 @@ use App\Library\Enums\Permissions;
 use Filament\Facades\Filament;
 use Filament\Forms\Form;
 use Filament\Tables;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Models\Role;
@@ -32,9 +34,9 @@ class RoleResource extends SpatieRoleResource
     {
         $table = parent::table($table);
         $table->actions([
-            Tables\Actions\ViewAction::make()
+            ViewAction::make()
                 ->authorize(fn() => Filament::auth()->user()?->can(Permissions::VIEW_ROLE)),
-            Tables\Actions\EditAction::make()
+            EditAction::make()
                 ->authorize(fn() => Filament::auth()->user()?->can(Permissions::EDIT_ROLE)),
         ]);
 
