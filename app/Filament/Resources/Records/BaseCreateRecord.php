@@ -11,7 +11,7 @@ class BaseCreateRecord extends CreateRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+//            Actions\DeleteAction::make(),
         ];
     }
 
